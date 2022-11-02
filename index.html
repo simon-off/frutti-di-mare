@@ -4,17 +4,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smoothie Calculator</title>
-    <meta name="description" content="Calculate your fruity smoothies nutritional value!" />
-    <meta name="keywords" content="nutrition, smoothie, banana, fruit, calculate" />
+    <title>Fish Calculator</title>
+    <meta name="description" content="Calculate your fishes nutritional value!" />
+    <meta name="keywords" content="nutrition, fish, fishing, fruit, calculate" />
     <meta name="author" content="simonoff" />
 
     <link rel="stylesheet" href="css/main.css" />
-    <script src="script.js"></script>
+    <script defer src="scripts/copyright.js"></script>
+    <script defer src="scripts/main.js"></script>
   </head>
   <body>
-    <header>header</header>
-    <main>main</main>
-    <footer>footer</footer>
+    <header class="mono"><h1>Frutti di Mare</h1></header>
+    <main>
+      <div>
+        <section class="find-section">
+          <form class="mono">
+            <div class="search-wrapper">
+              <label for="search">search:</label>
+              <input id="search" type="text" autocomplete="off" />
+            </div>
+            <div class="sort-wrapper">
+              <label for="sort-by">sort by:</label>
+              <select name="sort-by" id="sort-by">
+                <option value="Species Name">name</option>
+                <option value="Fat, Total">fat</option>
+                <option value="Calories">calories</option>
+              </select>
+              <label for="show-amount">show:</label>
+              <select name="show-amount" id="show-amount">
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="40">40</option>
+                <option value="80">80</option>
+                <option value="all">all</option>
+              </select>
+            </div>
+          </form>
+          <div class="results"></div>
+        </section>
+        <section class="cart-section">
+          <div>chosen</div>
+        </section>
+      </div>
+    </main>
+    <footer class="mono"><span id="copyright"></span></footer>
   </body>
 </html>

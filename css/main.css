@@ -1,4 +1,4 @@
-/* Josh's Custom CSS Reset 
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Source+Sans+Pro:wght@400;700&display=swap"); /* Josh's Custom CSS Reset 
 https://www.joshwcomeau.com/css/custom-css-reset/ */
 *,
 *::before,
@@ -60,5 +60,166 @@ h6 {
   }
 }
 body {
-  background-color: rgb(115, 115, 195);
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+:root {
+  --max-width: 1200px;
+  --drem: 1rem;
+  --color-bg: hsl(135, 100%, 95%);
+  --color-bg-dark: hsl(180, 100%, 90%);
+  --color-bg-bright: hsl(0, 0%, 100%);
+  --color-text: #222;
+  --border: 1px solid var(--color-text);
+  --fs-m: var(--drem);
+  --fs-l: calc(var(--drem) * 1.5);
+  --fs-xl: calc(var(--drem) * 2);
+  --fs-xxl: calc(var(--drem) * 3);
+}
+@media screen and (max-width: 700px) {
+  :root {
+    --drem: 0.875rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  :root {
+    --drem: 0.75rem;
+  }
+}
+
+input {
+  border-radius: 0;
+  box-shadow: none;
+  border: var(--border);
+  background-color: var(--color-bg);
+}
+input:focus {
+  outline: var(--border);
+}
+
+select {
+  border: var(--border);
+  background-color: var(--color-bg);
+  padding-inline: 0.25em;
+  /* needed */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* SVG background image */
+  background-image: url("../svg/chevron-down.svg");
+  background-position: calc(100% - 0.25em) center;
+  background-repeat: no-repeat;
+}
+select:focus {
+  outline: var(--border);
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+* {
+  color: var(--color-text);
+}
+
+*::-moz-selection {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+*::selection {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-size: var(--fs-m);
+  background-color: var(--color-bg);
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  border-bottom: var(--border);
+  padding: var(--drem);
+  background-color: var(--color-bg-dark);
+}
+header h1 {
+  font-size: var(--fs-xxl);
+}
+
+main {
+  padding: var(--drem);
+}
+main > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: var(--drem);
+  min-height: 100%;
+  margin-inline: auto;
+  max-width: var(--max-width);
+}
+@media screen and (max-width: 700px) {
+  main > div {
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+  }
+  main > div section:first-of-type {
+    grid-row: 2/-1;
+  }
+}
+main > div > section {
+  border: var(--border);
+  background-color: var(--color-bg-bright);
+}
+
+.find-section form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--drem) / 2);
+  padding: var(--drem);
+  border-bottom: var(--border);
+}
+.find-section form .search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.find-section form .search-wrapper label {
+  font-size: var(--fs-l);
+  line-height: 0.8;
+}
+.find-section form .search-wrapper input {
+  flex-grow: 1;
+}
+.find-section form .sort-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.find-section form .sort-wrapper select {
+  flex-grow: 1;
+}
+.find-section .results {
+  padding: var(--drem);
+  overflow-y: auto;
+}
+
+.cart-section {
+  padding: var(--drem);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  border-top: var(--border);
+  padding: var(--drem);
+  background-color: var(--color-bg-dark);
 }/*# sourceMappingURL=main.css.map */

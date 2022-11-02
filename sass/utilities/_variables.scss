@@ -1,0 +1,27 @@
+:root {
+  // Sizes
+  --max-width: 1200px;
+  --drem: 1rem;
+
+  @media screen and (max-width: 700px) {
+    --drem: 0.875rem;
+  }
+  @media screen and (max-width: 500px) {
+    --drem: 0.75rem;
+  }
+
+  // Colors
+  --color-bg: hsl(135, 100%, 95%);
+  --color-bg-dark: hsl(180, 100%, 90%);
+  --color-bg-bright: hsl(0, 0%, 100%);
+  --color-text: #222;
+
+  // Border
+  --border: 1px solid var(--color-text);
+
+  // Font size
+  --fs-m: var(--drem);
+  --fs-l: calc(var(--drem) * 1.5);
+  --fs-xl: calc(var(--drem) * 2);
+  --fs-xxl: calc(var(--drem) * 3);
+}

@@ -1,0 +1,30 @@
+@use "../utilities/variables";
+
+input {
+  border-radius: 0;
+  box-shadow: none;
+  border: var(--border);
+  background-color: var(--color-bg);
+
+  &:focus {
+    outline: var(--border);
+  }
+}
+
+select {
+  border: var(--border);
+  background-color: var(--color-bg);
+  padding-inline: 0.25em;
+  /* needed */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* SVG background image */
+  background-image: url("../svg/chevron-down.svg");
+  background-position: calc(100% - 0.25em) center;
+  background-repeat: no-repeat;
+
+  &:focus {
+    outline: var(--border);
+  }
+}
