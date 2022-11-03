@@ -1,6 +1,4 @@
-@use "../utilities/variables";
-
-input {
+form input {
   border-radius: 0;
   box-shadow: none;
   border: var(--border);
@@ -11,7 +9,7 @@ input {
   }
 }
 
-select {
+form select {
   border: var(--border);
   background-color: var(--color-bg);
   padding-inline: 0.25em;

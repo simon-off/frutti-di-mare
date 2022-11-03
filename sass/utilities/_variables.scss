@@ -24,4 +24,7 @@
   --fs-l: calc(var(--drem) * 1.5);
   --fs-xl: calc(var(--drem) * 2);
   --fs-xxl: calc(var(--drem) * 3);
+
+  // Transition
+  --time-fast: 100ms;
 }

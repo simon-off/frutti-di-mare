@@ -9,11 +9,8 @@ let fishCache;
 
 function sortFishes(fishes) {
   const sortValue = sortSelect.value;
-  for (let fish of fishes) {
-    if (!fish["Fat, Total"]) fish["Fat, Total"] = "0";
-    if (!fish["Calories"]) fish["Calories"] = "0";
-  }
 
+  // sort by name
   if (sortValue === "Species Name") {
     return fishes.sort((a, b) => {
       const valueA = a[sortValue].toUpperCase();
@@ -22,26 +19,53 @@ function sortFishes(fishes) {
       if (valueA > valueB) return 1;
     });
   }
+  // sort by fat
   if (sortValue === "Fat, Total") {
     return fishes.sort((a, b) => {
       const valueA = a[sortValue].split(" ")[0];
       const valueB = b[sortValue].split(" ")[0];
       return valueB - valueA;
     });
-  } else {
-    return fishes.sort((a, b) => b[sortValue] - a[sortValue]);
   }
+  // sort by calories
+  return fishes.sort((a, b) => b[sortValue] - a[sortValue]);
 }
 
 function createResultMarkup(fish) {
   const markup = document.createElement("article");
-  markup.classList.add("fish-result");
+  markup.classList.add("result");
   markup.innerHTML = `
-    <h3>${fish["Species Name"]}</h3>
-    <p>Calories: ${fish["Calories"]}</p>
-    <p>Fat: ${fish["Fat, Total"]}</p>
+    <div class="result__head">
+      <div class="result__head__expand">
+        <h3>${fish["Species Name"]}</h3>
+      </div>
+    </div>
+    <div class="result__body">
+      <p>Calories: ${fish["Calories"]}</p>
+      <p>Fat: ${fish["Fat, Total"]}</p>
+    </div>
   `;
+  const expand = markup.querySelector(".result__head__expand");
 
+  // Expand button
+  const expandButton = document.createElement("input");
+  expandButton.classList.add("expand");
+  expandButton.type = "image";
+  expandButton.src = "../svg/arrow.svg";
+  expandButton.alt = "Expand result";
+  expand.addEventListener("click", () => markup.classList.add("expanded"));
+  expand.append(expandButton);
+
+  // Add button
+  const addButton = document.createElement("input");
+  addButton.classList.add("add");
+  addButton.type = "image";
+  addButton.src = "../svg/plus.svg";
+  addButton.alt = "Add result to collection";
+  addButton.addEventListener("click", () => addResult(fish));
+  markup.querySelector(".result__head").append(addButton);
+
+  //
   fish.markup = markup;
 }
 
@@ -59,7 +83,6 @@ function updateResults(newData) {
     return showSelect.value;
   };
   const fishes = sortFishes(results).slice(0, amount());
-  // console.log(fishes);
   resultsEl.innerHTML = "";
 
   for (let fish of fishes) {
@@ -70,6 +93,11 @@ function updateResults(newData) {
 }
 
 function fetchSuccess(data) {
+  // Make sure there's no null values
+  for (let fish of data) {
+    if (!fish["Fat, Total"]) fish["Fat, Total"] = "0";
+    if (!fish["Calories"]) fish["Calories"] = "0";
+  }
   updateResults(data);
   fishCache = data;
 }

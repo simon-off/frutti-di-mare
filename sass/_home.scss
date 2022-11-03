@@ -90,9 +90,10 @@ main {
   }
 
   .results {
-    padding: var(--drem);
-    overflow-y: auto;
-    // height: 500px;
+    display: flex;
+    flex-direction: column;
+    // gap: var(--drem);
+    // padding-top: var(--drem);
   }
 }
 

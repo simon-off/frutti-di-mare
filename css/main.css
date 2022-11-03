@@ -67,41 +67,17 @@ body {
   font-family: "JetBrains Mono", monospace;
 }
 
-:root {
-  --max-width: 1200px;
-  --drem: 1rem;
-  --color-bg: hsl(135, 100%, 95%);
-  --color-bg-dark: hsl(180, 100%, 90%);
-  --color-bg-bright: hsl(0, 0%, 100%);
-  --color-text: #222;
-  --border: 1px solid var(--color-text);
-  --fs-m: var(--drem);
-  --fs-l: calc(var(--drem) * 1.5);
-  --fs-xl: calc(var(--drem) * 2);
-  --fs-xxl: calc(var(--drem) * 3);
-}
-@media screen and (max-width: 700px) {
-  :root {
-    --drem: 0.875rem;
-  }
-}
-@media screen and (max-width: 500px) {
-  :root {
-    --drem: 0.75rem;
-  }
-}
-
-input {
+form input {
   border-radius: 0;
   box-shadow: none;
   border: var(--border);
   background-color: var(--color-bg);
 }
-input:focus {
+form input:focus {
   outline: var(--border);
 }
 
-select {
+form select {
   border: var(--border);
   background-color: var(--color-bg);
   padding-inline: 0.25em;
@@ -114,12 +90,70 @@ select {
   background-position: calc(100% - 0.25em) center;
   background-repeat: no-repeat;
 }
-select:focus {
+form select:focus {
   outline: var(--border);
 }
 
 * {
   scrollbar-width: thin;
+}
+
+.result {
+  -webkit-border-after: var(--border);
+          border-block-end: var(--border);
+}
+.result__head {
+  display: flex;
+}
+.result__head__expand {
+  -webkit-padding-start: calc(var(--drem) / 2);
+          padding-inline-start: calc(var(--drem) / 2);
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.result__head input {
+  box-sizing: content-box;
+  height: var(--drem);
+  width: var(--drem);
+  padding: calc(var(--drem) / 2);
+}
+.result__head > * {
+  transition: var(--time-fast) ease-out;
+}
+.result__head > *:hover {
+  -webkit-backdrop-filter: brightness(0.9);
+          backdrop-filter: brightness(0.9);
+  cursor: pointer;
+}
+.result__body {
+  padding-inline: calc(var(--drem) / 2);
+}
+
+:root {
+  --max-width: 1200px;
+  --drem: 1rem;
+  --color-bg: hsl(135, 100%, 95%);
+  --color-bg-dark: hsl(180, 100%, 90%);
+  --color-bg-bright: hsl(0, 0%, 100%);
+  --color-text: #222;
+  --border: 1px solid var(--color-text);
+  --fs-m: var(--drem);
+  --fs-l: calc(var(--drem) * 1.5);
+  --fs-xl: calc(var(--drem) * 2);
+  --fs-xxl: calc(var(--drem) * 3);
+  --time-fast: 100ms;
+}
+@media screen and (max-width: 700px) {
+  :root {
+    --drem: 0.875rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  :root {
+    --drem: 0.75rem;
+  }
 }
 
 * {
@@ -208,8 +242,8 @@ main > div > section {
   flex-grow: 1;
 }
 .find-section .results {
-  padding: var(--drem);
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .cart-section {
