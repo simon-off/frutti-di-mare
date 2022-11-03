@@ -3,7 +3,7 @@
   --max-width: 1200px;
   --drem: 1rem;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 800px) {
     --drem: 0.875rem;
   }
   @media screen and (max-width: 500px) {
@@ -11,7 +11,7 @@
   }
 
   // Colors
-  --color-bg: hsl(135, 100%, 95%);
+  --color-bg: hsl(30, 100%, 90%);
   --color-bg-dark: hsl(180, 100%, 90%);
   --color-bg-bright: hsl(0, 0%, 100%);
   --color-text: #222;
@@ -27,4 +27,5 @@
 
   // Transition
   --time-fast: 100ms;
+  --time-medium: 200ms;
 }

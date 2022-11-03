@@ -40,7 +40,7 @@ main {
     margin-inline: auto;
     max-width: var(--max-width);
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 800px) {
       grid-template-rows: auto auto;
       grid-template-columns: 1fr;
 
@@ -56,7 +56,7 @@ main {
   }
 }
 
-.find-section {
+.results-section {
   form {
     display: flex;
     flex-direction: column;
@@ -92,13 +92,17 @@ main {
   .results {
     display: flex;
     flex-direction: column;
-    // gap: var(--drem);
-    // padding-top: var(--drem);
   }
 }
 
-.cart-section {
-  padding: var(--drem);
+.collection-section {
+  h2 {
+    font-size: var(--fs-l);
+    font-weight: normal;
+    line-height: 1.175;
+    padding: var(--drem);
+    border-bottom: var(--border);
+  }
 }
 
 footer {

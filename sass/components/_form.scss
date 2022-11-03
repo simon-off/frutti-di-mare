@@ -1,4 +1,4 @@
-form input {
+.styled-input {
   border-radius: 0;
   box-shadow: none;
   border: var(--border);
@@ -18,7 +18,8 @@ form select {
   -moz-appearance: none;
   appearance: none;
   /* SVG background image */
-  background-image: url("../svg/chevron-down.svg");
+  background-image: url("../svg/arrow.svg");
+  background-size: var(--drem);
   background-position: calc(100% - 0.25em) center;
   background-repeat: no-repeat;
 

@@ -14,14 +14,14 @@
     <script defer src="scripts/main.js"></script>
   </head>
   <body>
-    <header class="mono"><h1>Frutti di Mare</h1></header>
+    <header><h1>Frutti di Mare</h1></header>
     <main>
       <div>
-        <section class="find-section">
-          <form class="mono">
+        <section class="results-section">
+          <form>
             <div class="search-wrapper">
               <label for="search">search:</label>
-              <input id="search" type="text" autocomplete="off" />
+              <input id="search" type="text" autocomplete="off" class="styled-input" />
             </div>
             <div class="sort-wrapper">
               <label for="sort-by">sort by:</label>
@@ -42,11 +42,13 @@
           </form>
           <div class="results"></div>
         </section>
-        <section class="cart-section">
-          <div>chosen</div>
+        <section class="collection-section">
+          <h2>Collection</h2>
+          <p>FIXA STATS</p>
+          <div class="collection"></div>
         </section>
       </div>
     </main>
-    <footer class="mono"><span id="copyright"></span></footer>
+    <footer><span id="copyright"></span></footer>
   </body>
 </html>
