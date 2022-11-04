@@ -48,27 +48,25 @@
     align-items: center;
     gap: var(--drem);
 
+    img {
+      height: calc(var(--drem) * 2);
+      bottom: 0;
+      z-index: 1;
+    }
     &__facts {
       padding-inline: calc(var(--drem));
     }
-  }
-  img {
-    height: calc(var(--drem) * 2);
-    bottom: 0;
-    z-index: 1;
   }
 
   &.expanded {
     .expand {
       rotate: 180deg;
     }
-
     .item__body {
       padding: var(--drem);
       flex-direction: column;
       align-items: flex-start;
     }
-
     img {
       max-height: calc(var(--drem) * 16);
       height: unset;

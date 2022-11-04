@@ -156,7 +156,7 @@ function updateCollection() {
   collectionEl.innerHTML = "";
 
   for (let fish of fishCollection) {
-    // Create markup for fish in collection if not present
+    // Create markup for fish in collection
     createCollectionMarkup(fish);
 
     const amountSpan = fish.collectionMarkup.querySelector("#amount-span");
