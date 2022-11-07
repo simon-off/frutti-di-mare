@@ -32,12 +32,17 @@ function createMarkup(fish) {
     </div>
   </div>
   <div class="item__body">
-    <img src="${fish["Species Illustration Photo"].src}" alt="${fish["Species Illustration Photo"].alt}">
-    <div class="item__stats">
-      <p>Calories: ${fish["Calories"]} - Fat: ${fish["Fat, Total"]}g</p>
-    </div>
-    <div class="item__info">
-      <p></p>
+    <img src="${fish["Species Illustration Photo"].src}" 
+    alt="${fish["Species Illustration Photo"].alt}">
+    <ul class="item__stats">
+      <li>Calories: ${fish["Calories"]}</li>
+      <li>Protein: ${fish["Protein"]}g</li>
+      <li>Fat: ${fish["Fat, Total"]}g</li>
+    </ul>
+    <div class="item__info sans">
+      <hr>
+      <p>${fish.Quote}</p>
+      <p>Availability: ${fish.Availability.slice(3, -5)}</p>
     </div>
   </div>
   `;
@@ -78,7 +83,7 @@ function sortFishes(fishes) {
       if (valueA > valueB) return 1;
     });
   }
-  // sort by calories or fat
+  // sort by calories, protein or fat
   return fishes.sort((a, b) => b[sortValue] - a[sortValue]);
 }
 
@@ -135,14 +140,16 @@ function saveFish(fish) {
 
   updateCollection();
   playAnimation(fish.collectionMarkup.querySelector(".item__head"), "anim-add");
+
+  console.log(fish);
 }
 
 //===========================================================//
 //+++ COLLECTION FUNCTIONS +++||-----------------------------//
 //===========================================================//
 
+// TODO: Uppdatera stats för alla fiskar va.
 function updateCollectionStats() {
-  // TODO: Uppdatera stats för alla fiskar va.
   // console.log("hello");
 }
 
@@ -177,7 +184,7 @@ function updateCollection() {
     createCollectionMarkup(fish);
 
     const amountSpan = fish.collectionMarkup.querySelector("#amount-span");
-    amountSpan.innerText = fish.amount + " - ";
+    amountSpan.innerText = fish.amount + "00g - ";
 
     collectionEl.append(fish.collectionMarkup);
   }
@@ -216,8 +223,10 @@ function fetchSuccess(data) {
     // Remove null values
     if (!fish["Fat, Total"]) fish["Fat, Total"] = "0";
     if (!fish["Calories"]) fish["Calories"] = "0";
+    if (!fish["Protein"]) fish["Protein"] = "0";
     // Remove "g" from fat
     fish["Fat, Total"] = fish["Fat, Total"].split(" ")[0];
+    fish["Protein"] = fish["Protein"].split(" ")[0];
   }
 
   updateResults(data);

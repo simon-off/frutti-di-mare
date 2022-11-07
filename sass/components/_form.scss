@@ -2,7 +2,7 @@
   border-radius: 0;
   box-shadow: none;
   border: var(--border);
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-bright);
 
   &:focus {
     outline: var(--border);
@@ -13,7 +13,7 @@
   border-radius: 0;
   box-shadow: none;
   border: var(--border);
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-bright);
 
   &:hover {
     filter: brightness(0.93);
@@ -27,7 +27,7 @@
 
 form select {
   border: var(--border);
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-bright);
   padding-inline: 0.25em;
   /* needed */
   -webkit-appearance: none;
