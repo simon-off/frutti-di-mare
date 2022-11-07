@@ -7,6 +7,7 @@ const collectionEl = document.querySelector(".collection");
 const searchField = document.querySelector("#search");
 const showSelect = document.querySelector("#show-amount");
 const sortSelect = document.querySelector("#sort-by");
+const removeAllBtn = document.querySelector("#remove-all");
 
 const apiURL = "https://www.fishwatch.gov/api/species";
 
@@ -31,7 +32,7 @@ function createMarkup(fish) {
   </div>
   <div class="item__body">
     <img src="${fish["Species Illustration Photo"].src}" alt="${fish["Species Illustration Photo"].alt}">
-    <div class="item__facts">
+    <div class="item__stats">
       <p>Calories: ${fish["Calories"]} - Fat: ${fish["Fat, Total"]}g</p>
     </div>
   </div>
@@ -126,7 +127,7 @@ function saveFish(fish) {
 
 function updateCollectionStats() {
   // TODO: Uppdatera stats för alla fiskar va.
-  console.log("hello");
+  // console.log("hello");
 }
 
 function createCollectionMarkup(fish) {
@@ -174,6 +175,14 @@ function removeFish(fish) {
   updateCollection();
 }
 
+function removeAllFish() {
+  for (let fish of fishCollection) {
+    fish.amount = 0;
+  }
+  fishCollection.length = 0;
+  updateCollection();
+}
+
 //===========================================================//
 //+++ FETCH FUNCTIONS +++||----------------------------------//
 //===========================================================//
@@ -216,6 +225,7 @@ async function fetchData(url) {
 searchField.addEventListener("input", () => updateResults());
 showSelect.addEventListener("input", () => updateResults());
 sortSelect.addEventListener("input", () => updateResults());
+removeAllBtn.addEventListener("click", () => removeAllFish());
 
 // FIXME: DO NOT FORGET
 fetchData("species.json");

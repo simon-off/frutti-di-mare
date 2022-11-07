@@ -96,12 +96,16 @@ main {
 }
 
 .collection-section {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: var(--border);
+    padding: var(--drem);
+  }
   h2 {
     font-size: var(--fs-l);
     font-weight: normal;
-    line-height: 1.175;
-    padding: var(--drem);
-    border-bottom: var(--border);
+    line-height: 1;
   }
 }
 

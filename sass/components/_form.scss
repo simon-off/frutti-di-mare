@@ -9,6 +9,22 @@
   }
 }
 
+.styled-button {
+  border-radius: 0;
+  box-shadow: none;
+  border: var(--border);
+  background-color: var(--color-bg);
+
+  &:hover {
+    filter: brightness(0.93);
+  }
+
+  &:active {
+    filter: brightness(0.85);
+    outline: var(--border);
+  }
+}
+
 form select {
   border: var(--border);
   background-color: var(--color-bg);

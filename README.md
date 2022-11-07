@@ -13,7 +13,7 @@ The original plan for this project was to use an api that returns different frui
 
 ### The Result
 
-On this web page you can search for different fish and order the results by name, fat or calories. You can also chose how many results you want to show at once. You can then expand each entry to read more about the fish and look at their picture. If you like a specific fish you can add it to your collection by clicking the **plus sign** (click multiple times for more of the same fish). The total fat and calories from all your fishes is then calculated in the top section of your collection. If you change your mind you can remove one fish at a time by clicking the **X** or remove all of them at the same time with the button up top.
+On this web page you can search for different fish and order the results by name, fat or calories. You can also chose how many results you want to show at once. You can then expand each entry to read more about the fish and look at their picture. If you like a specific fish you can add it to your collection by clicking the **plus sign** (click multiple times for more of the same fish). The total fat and calories from all your fishes is then calculated in the top section of your collection. If you change your mind you can remove one fish at a time by clicking the **X** or remove all of them at the same time with the button up top. The collection is saved in local storage each time you update it.
 
 One big problem I had was loading the pictures. Since i get them straight from the api I don't have any control over the file size. The pictures can take quite some time to load if you're on a slower connection.
 

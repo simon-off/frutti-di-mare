@@ -44,7 +44,8 @@
     padding-inline: var(--drem);
     padding-block: calc(var(--drem) / 2);
     transition: max-height var(--time-medium) ease-out;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
     gap: var(--drem);
 
@@ -53,7 +54,7 @@
       bottom: 0;
       z-index: 1;
     }
-    &__facts {
+    &__stats {
       padding-inline: calc(var(--drem));
     }
   }
@@ -64,8 +65,7 @@
     }
     .item__body {
       padding: var(--drem);
-      flex-direction: column;
-      align-items: flex-start;
+      grid-template-columns: auto;
     }
     img {
       max-height: calc(var(--drem) * 16);
