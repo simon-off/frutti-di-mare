@@ -4,6 +4,7 @@
 
 const resultsEl = document.querySelector(".results");
 const collectionSection = document.querySelector(".collection-section");
+const collectionStats = document.querySelector(".collection-section__stats");
 const collectionEl = document.querySelector(".collection");
 const searchField = document.querySelector("#search");
 const showSelect = document.querySelector("#show-amount");
@@ -21,7 +22,6 @@ let fishCollection = localStorage.getItem("fishes")
 //+++ COMMON FUNCTIONS +++||---------------------------------//
 //===========================================================//
 
-// TODO: Lägg till mer stats
 function createMarkup(fish) {
   const markup = document.createElement("article");
   markup.classList.add("item");
@@ -39,10 +39,12 @@ function createMarkup(fish) {
       <li>Protein: ${fish["Protein"]}g</li>
       <li>Fat: ${fish["Fat, Total"]}g</li>
     </ul>
-    <div class="item__info sans">
+    <div class="item__info">
       <hr>
-      <p>${fish.Quote}</p>
-      <p>Availability: ${fish.Availability.slice(3, -5)}</p>
+      <p><b>Scientific Name: </b><i>${fish["Scientific Name"]}</i></p>
+      <q>${fish.Quote}</q>
+      <p><b>Taste:</b> ${fish.Taste.slice(3, -5)}</p>
+      <p><b>Availability:</b> ${fish.Availability.slice(3, -5)}</p>
     </div>
   </div>
   `;
@@ -140,6 +142,7 @@ function saveFish(fish) {
 
   updateCollection();
   playAnimation(fish.collectionMarkup.querySelector(".item__head"), "anim-add");
+  playAnimation(collectionStats, "anim-add");
 
   console.log(fish);
 }
@@ -150,7 +153,16 @@ function saveFish(fish) {
 
 // TODO: Uppdatera stats för alla fiskar va.
 function updateCollectionStats() {
-  // console.log("hello");
+  const cal = fishCollection.reduce((a, b) => a + Number(b["Calories"]) * b.amount, 0);
+  const pro = fishCollection.reduce((a, b) => a + Number(b["Protein"]) * b.amount, 0);
+  const fat = fishCollection.reduce((a, b) => a + Number(b["Fat, Total"]) * b.amount, 0);
+  collectionStats.innerHTML = `
+  <ul>
+    <li>Total Calories: ${Math.round(cal * 10) / 10}</li>
+    <li>Total Protein: ${Math.round(pro * 10) / 10}g</li>
+    <li>Total Fat: ${Math.round(fat * 10) / 10}g</li>
+  </ul>
+  `;
 }
 
 function createCollectionMarkup(fish) {
@@ -197,6 +209,7 @@ function removeFish(fish) {
   }
   updateCollection();
   playAnimation(fish.collectionMarkup.querySelector(".item__head"), "anim-remove");
+  playAnimation(collectionStats, "anim-remove");
 }
 
 function removeAllFish() {

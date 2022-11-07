@@ -99,11 +99,26 @@ main {
     justify-content: space-between;
     border-bottom: var(--border);
     padding: var(--drem);
+
+    h2 {
+      font-size: var(--fs-l);
+      font-weight: normal;
+      line-height: 1;
+    }
   }
-  h2 {
-    font-size: var(--fs-l);
-    font-weight: normal;
-    line-height: 1;
+  &__stats {
+    padding: var(--drem);
+    border-bottom: var(--border);
+
+    ul {
+      padding: 0;
+      list-style-type: square;
+      font-size: calc(var(--drem) * 1.125);
+    }
+
+    li {
+      margin-inline-start: calc(var(--drem) * 1);
+    }
   }
 }
 

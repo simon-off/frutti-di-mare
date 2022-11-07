@@ -1,6 +1,6 @@
 :root {
   // Sizes
-  --max-width: 1200px;
+  --max-width: 1440px;
   --drem: 1rem;
 
   @media screen and (max-width: 800px) {
@@ -17,7 +17,7 @@
   --color-text: #222;
 
   // Border
-  --border: 1px solid var(--color-text);
+  --border: 1px solid #999;
 
   // Font size
   --fs-m: var(--drem);

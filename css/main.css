@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Source+Sans+Pro:wght@400;700&display=swap");
 :root {
-  --max-width: 1200px;
+  --max-width: 1440px;
   --drem: 1rem;
   --color-bg: hsl(30, 100%, 90%);
   --color-bg-dark: hsl(180, 100%, 90%);
   --color-bg-bright: hsl(0, 0%, 100%);
   --color-text: #222;
-  --border: 1px solid var(--color-text);
+  --border: 1px solid #999;
   --fs-m: var(--drem);
   --fs-l: calc(var(--drem) * 1.5);
   --fs-xl: calc(var(--drem) * 2);
@@ -172,8 +172,7 @@ form select:focus {
 }
 
 .item {
-  -webkit-border-after: var(--border);
-          border-block-end: var(--border);
+  border-bottom: var(--border);
 }
 .item__head {
   display: flex;
@@ -252,16 +251,22 @@ form select:focus {
   display: none;
 }
 .item__info hr {
-  background-color: rgb(205, 205, 205);
-  height: 3px;
+  background-color: #ccc;
+  height: 2px;
   border-radius: 10px;
   border: none;
+}
+.item__info q {
+  background-color: #eee;
+  border: var(--border);
+  padding: var(--drem);
 }
 .item.expanded .expand {
   rotate: 180deg;
 }
 .item.expanded .item__body {
   padding: var(--drem);
+  padding-bottom: calc(var(--drem) * 2);
   grid-template-columns: auto;
   gap: var(--drem);
 }
@@ -379,10 +384,23 @@ main > div > section {
   border-bottom: var(--border);
   padding: var(--drem);
 }
-.collection-section h2 {
+.collection-section__header h2 {
   font-size: var(--fs-l);
   font-weight: normal;
   line-height: 1;
+}
+.collection-section__stats {
+  padding: var(--drem);
+  border-bottom: var(--border);
+}
+.collection-section__stats ul {
+  padding: 0;
+  list-style-type: square;
+  font-size: calc(var(--drem) * 1.125);
+}
+.collection-section__stats li {
+  -webkit-margin-start: calc(var(--drem) * 1);
+          margin-inline-start: calc(var(--drem) * 1);
 }
 
 footer {

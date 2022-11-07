@@ -1,5 +1,5 @@
 .item {
-  border-block-end: var(--border);
+  border-bottom: var(--border);
 
   &__head {
     display: flex;
@@ -72,10 +72,15 @@
     display: none;
 
     hr {
-      background-color: rgb(205, 205, 205);
-      height: 3px;
+      background-color: #ccc;
+      height: 2px;
       border-radius: 10px;
       border: none;
+    }
+    q {
+      background-color: #eee;
+      border: var(--border);
+      padding: var(--drem);
     }
   }
 
@@ -85,6 +90,7 @@
     }
     .item__body {
       padding: var(--drem);
+      padding-bottom: calc(var(--drem) * 2);
       grid-template-columns: auto;
       gap: var(--drem);
     }
