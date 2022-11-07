@@ -1,4 +1,62 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Source+Sans+Pro:wght@400;700&display=swap"); /* Josh's Custom CSS Reset 
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Source+Sans+Pro:wght@400;700&display=swap");
+:root {
+  --max-width: 1200px;
+  --drem: 1rem;
+  --color-bg: hsl(30, 100%, 90%);
+  --color-bg-dark: hsl(180, 100%, 90%);
+  --color-bg-bright: hsl(0, 0%, 100%);
+  --color-text: #222;
+  --border: 1px solid var(--color-text);
+  --fs-m: var(--drem);
+  --fs-l: calc(var(--drem) * 1.5);
+  --fs-xl: calc(var(--drem) * 2);
+  --fs-xxl: calc(var(--drem) * 3);
+  --time-fast: 100ms;
+  --time-medium: 200ms;
+}
+@media screen and (max-width: 800px) {
+  :root {
+    --drem: 0.875rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  :root {
+    --drem: 0.75rem;
+  }
+}
+
+@-webkit-keyframes add {
+  from {
+    background-color: hsl(120deg, 75%, 85%);
+  }
+}
+
+@keyframes add {
+  from {
+    background-color: hsl(120deg, 75%, 85%);
+  }
+}
+@-webkit-keyframes remove {
+  from {
+    background-color: hsl(0deg, 75%, 90%);
+  }
+}
+@keyframes remove {
+  from {
+    background-color: hsl(0deg, 75%, 90%);
+  }
+}
+.anim-add {
+  -webkit-animation: add var(--time-medium) ease-in-out forwards;
+          animation: add var(--time-medium) ease-in-out forwards;
+}
+
+.anim-remove {
+  -webkit-animation: remove var(--time-medium) ease-in-out forwards;
+          animation: remove var(--time-medium) ease-in-out forwards;
+}
+
+/* Josh's Custom CSS Reset 
 https://www.joshwcomeau.com/css/custom-css-reset/ */
 *,
 *::before,
@@ -162,6 +220,10 @@ form select:focus {
           backdrop-filter: brightness(0.9);
   cursor: pointer;
 }
+.item__head > *:active {
+  -webkit-backdrop-filter: brightness(0.75);
+          backdrop-filter: brightness(0.75);
+}
 .item__body {
   padding-inline: var(--drem);
   padding-block: calc(var(--drem) / 2);
@@ -179,6 +241,9 @@ form select:focus {
 .item__body__stats {
   padding-inline: calc(var(--drem));
 }
+.item__body__info {
+  background-color: aquamarine;
+}
 .item.expanded .expand {
   rotate: 180deg;
 }
@@ -189,32 +254,6 @@ form select:focus {
 .item.expanded img {
   max-height: calc(var(--drem) * 16);
   height: unset;
-}
-
-:root {
-  --max-width: 1200px;
-  --drem: 1rem;
-  --color-bg: hsl(30, 100%, 90%);
-  --color-bg-dark: hsl(180, 100%, 90%);
-  --color-bg-bright: hsl(0, 0%, 100%);
-  --color-text: #222;
-  --border: 1px solid var(--color-text);
-  --fs-m: var(--drem);
-  --fs-l: calc(var(--drem) * 1.5);
-  --fs-xl: calc(var(--drem) * 2);
-  --fs-xxl: calc(var(--drem) * 3);
-  --time-fast: 100ms;
-  --time-medium: 200ms;
-}
-@media screen and (max-width: 800px) {
-  :root {
-    --drem: 0.875rem;
-  }
-}
-@media screen and (max-width: 500px) {
-  :root {
-    --drem: 0.75rem;
-  }
 }
 
 * {

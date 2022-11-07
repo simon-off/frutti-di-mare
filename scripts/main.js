@@ -3,6 +3,7 @@
 //===========================================================//
 
 const resultsEl = document.querySelector(".results");
+const collectionSection = document.querySelector(".collection-section");
 const collectionEl = document.querySelector(".collection");
 const searchField = document.querySelector("#search");
 const showSelect = document.querySelector("#show-amount");
@@ -35,6 +36,9 @@ function createMarkup(fish) {
     <div class="item__stats">
       <p>Calories: ${fish["Calories"]} - Fat: ${fish["Fat, Total"]}g</p>
     </div>
+    <div class="item__info">
+      <p></p>
+    </div>
   </div>
   `;
   const expand = markup.querySelector(".item__head__expand");
@@ -49,6 +53,13 @@ function createMarkup(fish) {
   expand.append(expandButton);
 
   return markup;
+}
+
+function playAnimation(targetEl, anim) {
+  targetEl.classList.add(anim);
+  setTimeout(() => {
+    targetEl.classList.remove(anim);
+  }, 200);
 }
 
 //===========================================================//
@@ -83,7 +94,7 @@ function createResultMarkup(fish) {
   addButton.addEventListener("click", () => saveFish(fish));
   markup.querySelector(".item__head").append(addButton);
 
-  //
+  // Save markup to fish
   fish.resultMarkup = markup;
 }
 
@@ -111,14 +122,19 @@ function updateResults(newData) {
 }
 
 function saveFish(fish) {
-  if (!fishCollection.includes(fish)) {
+  const savedFish = fishCollection.find((e) => e["Species Name"] === fish["Species Name"]);
+
+  if (!savedFish) {
     fish.amount = 1;
     fishCollection.push(fish);
   } else {
+    fish.amount = savedFish.amount;
+    fishCollection.splice(fishCollection.indexOf(savedFish), 1, fish);
     fish.amount += 1;
   }
 
   updateCollection();
+  playAnimation(fish.collectionMarkup.querySelector(".item__head"), "anim-add");
 }
 
 //===========================================================//
@@ -173,6 +189,7 @@ function removeFish(fish) {
     fishCollection.splice(fishCollection.indexOf(fish), 1);
   }
   updateCollection();
+  playAnimation(fish.collectionMarkup.querySelector(".item__head"), "anim-remove");
 }
 
 function removeAllFish() {
@@ -181,6 +198,7 @@ function removeAllFish() {
   }
   fishCollection.length = 0;
   updateCollection();
+  playAnimation(collectionSection, "anim-remove");
 }
 
 //===========================================================//

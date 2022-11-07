@@ -1,0 +1,19 @@
+@keyframes add {
+  from {
+    background-color: hsl(120, 75%, 85%);
+  }
+}
+
+@keyframes remove {
+  from {
+    background-color: hsl(0, 75%, 90%);
+  }
+}
+
+.anim-add {
+  animation: add var(--time-medium) ease-in-out forwards;
+}
+
+.anim-remove {
+  animation: remove var(--time-medium) ease-in-out forwards;
+}
