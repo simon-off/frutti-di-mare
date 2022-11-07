@@ -11,6 +11,11 @@ const showSelect = document.querySelector("#show-amount");
 const sortSelect = document.querySelector("#sort-by");
 const removeAllBtn = document.querySelector("#remove-all");
 
+// Loading spinner
+const loading = document.querySelector(".loading");
+loading.start = () => (loading.style.display = "flex");
+loading.stop = () => (loading.style.display = "none");
+
 const apiURL = "https://www.fishwatch.gov/api/species";
 
 let fishCache;
@@ -143,15 +148,12 @@ function saveFish(fish) {
   updateCollection();
   playAnimation(fish.collectionMarkup.querySelector(".item__head"), "anim-add");
   playAnimation(collectionStats, "anim-add");
-
-  console.log(fish);
 }
 
 //===========================================================//
 //+++ COLLECTION FUNCTIONS +++||-----------------------------//
 //===========================================================//
 
-// TODO: Uppdatera stats för alla fiskar va.
 function updateCollectionStats() {
   const cal = fishCollection.reduce((a, b) => a + Number(b["Calories"]) * b.amount, 0);
   const pro = fishCollection.reduce((a, b) => a + Number(b["Protein"]) * b.amount, 0);
@@ -237,6 +239,10 @@ function fetchSuccess(data) {
     if (!fish["Fat, Total"]) fish["Fat, Total"] = "0";
     if (!fish["Calories"]) fish["Calories"] = "0";
     if (!fish["Protein"]) fish["Protein"] = "0";
+    if (!fish["Scientific Name"]) fish["Scientific Name"] = "Missing information";
+    if (!fish["Quote"]) fish["Quote"] = "Such fish!";
+    if (!fish["Taste"]) fish["Taste"] = "Missing information";
+    if (!fish["Availability"]) fish["Availability"] = "Missing information";
     // Remove "g" from fat
     fish["Fat, Total"] = fish["Fat, Total"].split(" ")[0];
     fish["Protein"] = fish["Protein"].split(" ")[0];
@@ -245,13 +251,23 @@ function fetchSuccess(data) {
   updateResults(data);
   updateCollection();
   fishCache = data;
+
+  loading.stop();
 }
 
 function fetchFail(result) {
+  loading.stop();
+  resultsEl.innerHTML = `
+    <div class="error">
+      <p><b>${result.status}: ${result.statusText}</b></p>
+      <p>Oops...</p>
+    </div>
+  `;
   console.error(result.status, result.statusText);
 }
 
 async function fetchData(url) {
+  loading.start();
   const result = await fetch(url);
   if (!result.ok) return fetchFail(result);
   const data = await result.json();
@@ -267,5 +283,4 @@ showSelect.addEventListener("input", () => updateResults());
 sortSelect.addEventListener("input", () => updateResults());
 removeAllBtn.addEventListener("click", () => removeAllFish());
 
-// FIXME: DO NOT FORGET
-fetchData("species.json");
+fetchData(apiURL);

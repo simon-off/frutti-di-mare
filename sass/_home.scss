@@ -129,3 +129,8 @@ footer {
   padding: var(--drem);
   background-color: var(--color-bg-dark);
 }
+
+.error {
+  padding: var(--drem);
+  font-size: calc(var(--drem) * 1.5);
+}

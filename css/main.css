@@ -288,6 +288,74 @@ form select:focus {
   gap: var(--drem);
 }
 
+.loading {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 80%;
+  max-width: 400px;
+  height: 50%;
+  max-height: 400px;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background-color: white;
+  border: var(--border);
+  padding: calc(var(--drem) * 2);
+  gap: var(--drem);
+  z-index: 2;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+}
+
+.spinner {
+  --color: black;
+  --size: calc(var(--drem) * 8);
+  --inset: 25%;
+  aspect-ratio: 1/1;
+  width: var(--size);
+  border-radius: 50%;
+  background-image: conic-gradient(rgba(0, 0, 0, 0), var(--color));
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+.spinner::before {
+  position: absolute;
+  inset: var(--inset);
+  content: "";
+  border-radius: inherit;
+  background-color: rgb(255, 255, 255);
+}
+.spinner::after {
+  position: absolute;
+  top: 0px;
+  left: calc(var(--size) / 2 - var(--inset) / 2);
+  width: var(--inset);
+  content: "";
+  display: block;
+  aspect-ratio: inherit;
+  border-radius: inherit;
+  background-color: var(--color);
+}
+
+@-webkit-keyframes spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
 * {
   color: var(--color-text);
 }
@@ -409,4 +477,9 @@ footer {
   border-top: var(--border);
   padding: var(--drem);
   background-color: var(--color-bg-dark);
+}
+
+.error {
+  padding: var(--drem);
+  font-size: calc(var(--drem) * 1.5);
 }/*# sourceMappingURL=main.css.map */
