@@ -18,3 +18,5 @@ On this web page you can search for different fish and order the results by name
 One big problem I had was loading the pictures. Since i get them straight from the api I don't have any control over the file size. The pictures can take quite some time to load if you're on a slower connection.
 
 I tried my best to make the site responsive and mobile friendly. Hopefully it looks decent on mobile devices even though it is a bit clunky to operate.
+
+The **species.json** file is a copy of the data from the API used when developing. I fetched a local file when working to avoid excessive fetch calls to the API. Now it's using the API again.
