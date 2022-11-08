@@ -2,12 +2,13 @@
 //+++ GLOBAL VARIABLES +++||---------------------------------//
 //===========================================================//
 
-const resultsEl = document.querySelector(".results");
 const collectionSection = document.querySelector(".collection-section");
 const collectionStats = document.querySelector(".collection-section__stats");
 const collectionEl = document.querySelector(".collection");
 const searchField = document.querySelector("#search");
+const filterForm = document.querySelector(".results-section > form");
 const showSelect = document.querySelector("#show-amount");
+const resultsEl = document.querySelector(".results");
 const sortSelect = document.querySelector("#sort-by");
 const removeAllBtn = document.querySelector("#remove-all");
 
@@ -282,5 +283,6 @@ searchField.addEventListener("input", () => updateResults());
 showSelect.addEventListener("input", () => updateResults());
 sortSelect.addEventListener("input", () => updateResults());
 removeAllBtn.addEventListener("click", () => removeAllFish());
+filterForm.addEventListener("submit", (e) => e.preventDefault());
 
 fetchData(apiURL);
