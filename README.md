@@ -1,4 +1,4 @@
-# Frutti di Mare: 🐟 = 🌊🍎
+# Frutti di Mare 🍎🌊
 
 ### 📝 The Plan
 
