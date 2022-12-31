@@ -61,7 +61,7 @@ function createMarkup(fish) {
   expandButton.classList.add("expand");
   expandButton.type = "image";
   expandButton.src = "../svg/arrow.svg";
-  expandButton.alt = "Expand result";
+  expandButton.alt = "Expand";
   expand.addEventListener("click", () => markup.classList.toggle("expanded"));
   expand.append(expandButton);
 
@@ -181,7 +181,7 @@ function createCollectionMarkup(fish) {
   removeButton.classList.add("remove");
   removeButton.type = "image";
   removeButton.src = "../svg/cross.svg";
-  removeButton.alt = "Remove fish from collection";
+  removeButton.alt = "Remove";
   removeButton.addEventListener("click", () => removeFish(fish));
   markup.querySelector(".item__head").append(removeButton);
 
