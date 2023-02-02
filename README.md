@@ -4,7 +4,7 @@ Fish info app made with vanilla JavaScript. Part of course submission for _JSFE_
 
 Preview on Netlify: [fruttidimare.netlify.app](https://fruttidimare.netlify.app/)
 
-Using data from [fishwatch.gov/api/species](https://www.fishwatch.gov/api/species)
+Using data from: [fishwatch.gov/api/species](https://www.fishwatch.gov/api/species)
 
 ---
 
