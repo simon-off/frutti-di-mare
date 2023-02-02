@@ -1,5 +1,13 @@
 # Frutti di Mare 🍎🌊
 
+Fish info app made with vanilla JavaScript. Part of course submission for _JSFE_ at _ECUtbildning 2022_.
+
+Preview on Netlify: [fruttidimare.netlify.app](https://fruttidimare.netlify.app/)
+
+Using data from [fishwatch.gov/api/species](https://www.fishwatch.gov/api/species)
+
+---
+
 ### 📝 The Plan
 
 The original plan for this project was to use an api that returns different fruits and their properties. I was then going to use that information to create a _smoothie calculator_. But I couldn't get the api to send proper JSON no matter how much I tried. It worked in the browser but as soon as I tried to use it in vscode with fetch things went awry. Long story short, I changed api! I pivoted to fish instead (since fish is the fruits of the sea).
