@@ -17,7 +17,7 @@ const loading = document.querySelector(".loading");
 loading.start = () => (loading.style.display = "flex");
 loading.stop = () => (loading.style.display = "none");
 
-const apiURL = "https://www.fishwatch.gov/api/species";
+const apiURL = "species.json";
 
 let fishCache;
 let fishCollection = localStorage.getItem("fishes")
@@ -116,7 +116,9 @@ function updateResults(newData) {
   let results = data;
   if (searchField.value) {
     results = data.filter((fish) => {
-      return fish["Species Name"].toLowerCase().includes(searchField.value.toLowerCase());
+      return fish["Species Name"]
+        .toLowerCase()
+        .includes(searchField.value.toLowerCase());
     });
   }
   const amount = () => {
@@ -135,7 +137,9 @@ function updateResults(newData) {
 }
 
 function saveFish(fish) {
-  const savedFish = fishCollection.find((e) => e["Species Name"] === fish["Species Name"]);
+  const savedFish = fishCollection.find(
+    (e) => e["Species Name"] === fish["Species Name"]
+  );
 
   if (!savedFish) {
     fish.amount = 1;
@@ -156,9 +160,18 @@ function saveFish(fish) {
 //===========================================================//
 
 function updateCollectionStats() {
-  const cal = fishCollection.reduce((a, b) => a + Number(b["Calories"]) * b.amount, 0);
-  const pro = fishCollection.reduce((a, b) => a + Number(b["Protein"]) * b.amount, 0);
-  const fat = fishCollection.reduce((a, b) => a + Number(b["Fat, Total"]) * b.amount, 0);
+  const cal = fishCollection.reduce(
+    (a, b) => a + Number(b["Calories"]) * b.amount,
+    0
+  );
+  const pro = fishCollection.reduce(
+    (a, b) => a + Number(b["Protein"]) * b.amount,
+    0
+  );
+  const fat = fishCollection.reduce(
+    (a, b) => a + Number(b["Fat, Total"]) * b.amount,
+    0
+  );
   collectionStats.innerHTML = `
   <ul>
     <li>Total Calories: ${Math.round(cal * 10) / 10}</li>
@@ -211,7 +224,10 @@ function removeFish(fish) {
     fishCollection.splice(fishCollection.indexOf(fish), 1);
   }
   updateCollection();
-  playAnimation(fish.collectionMarkup.querySelector(".item__head"), "anim-remove");
+  playAnimation(
+    fish.collectionMarkup.querySelector(".item__head"),
+    "anim-remove"
+  );
   playAnimation(collectionStats, "anim-remove");
 }
 
@@ -232,7 +248,8 @@ function fetchSuccess(data) {
   // Remove duplicates
   const species = "Species Name";
   data = data.filter(
-    (el, index, self) => index === self.findIndex((t) => t[species] === el[species])
+    (el, index, self) =>
+      index === self.findIndex((t) => t[species] === el[species])
   );
 
   for (let fish of data) {
@@ -240,7 +257,8 @@ function fetchSuccess(data) {
     if (!fish["Fat, Total"]) fish["Fat, Total"] = "0";
     if (!fish["Calories"]) fish["Calories"] = "0";
     if (!fish["Protein"]) fish["Protein"] = "0";
-    if (!fish["Scientific Name"]) fish["Scientific Name"] = "Missing information";
+    if (!fish["Scientific Name"])
+      fish["Scientific Name"] = "Missing information";
     if (!fish["Quote"]) fish["Quote"] = "Such fish!";
     if (!fish["Taste"]) fish["Taste"] = "Missing information";
     if (!fish["Availability"]) fish["Availability"] = "Missing information";
